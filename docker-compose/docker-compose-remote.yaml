@@ -2,10 +2,8 @@ x-environment:
   - &env-postgres-db POSTGRES_DB=${POSTGRES_DB}
   - &env-postgres-user POSTGRES_USER=${POSTGRES_USER}
   - &env-postgres-password POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-  - &env-postgres-port POSTGRES_PORT=${POSTGRES_PORT}
   - &env-geoserver-admin-user GEOSERVER_ADMIN_USER=${GEOSERVER_ADMIN_USER}
   - &env-geoserver-admin-password GEOSERVER_ADMIN_PASSWORD=${GEOSERVER_ADMIN_PASSWORD}
-  - &env-geoserver-port GEOSERVER_PORT=${GEOSERVER_PORT}
 
 services:
   postgis:
@@ -19,7 +17,7 @@ services:
       - *env-postgres-user
       - *env-postgres-password
     ports:
-      - *env-postgres-port:5432
+      - '${POSTGRES_PORT}:5432'
     volumes:
       - postgis-data:/var/lib/postgresql/data
 
@@ -30,7 +28,7 @@ services:
     image: 'geoserver_prge'
     container_name: 'geoserver_prge_${ENV_NAME'
     ports:
-      - *env-geoserver-port:8080
+      - '${GEOSERVER_PORT}:8080'
     environment:
       - *env-geoserver-admin-user
       - *env-geoserver-admin-password
