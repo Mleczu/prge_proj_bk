@@ -14,5 +14,21 @@ services:
     volumes:
       - postgis-data:/var/lib/postgresql/data
 
+  geoserver:
+    build:
+      context: ..
+      dockerfile: docker/geoserver/Dockerfile
+    image: 'geoserver_prge'
+    container_name: 'geoserver_prge'
+    ports:
+      - '9004:8080'
+    environment:
+      GEOSERVER_ADMIN_USER: prge
+      GEOSERVER_ADMIN_PASSWORD: prge
+    volumes:
+      - geoserver-data:/opt/geoserver_data
+
+
 volumes:
   postgis-data:
+  geoserver-data:
