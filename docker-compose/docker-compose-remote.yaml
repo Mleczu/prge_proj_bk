@@ -13,7 +13,7 @@ services:
       context: ..
       dockerfile: docker/postgis/Dockerfile
     image: 'postgis_prge'
-    container_name: 'postgis_prge'
+    container_name: 'postgis_prge_${ENV_NAME}'
     environment:
       - *env-postgres-db
       - *env-postgres-user
@@ -28,7 +28,7 @@ services:
       context: ..
       dockerfile: docker/geoserver/Dockerfile
     image: 'geoserver_prge'
-    container_name: 'geoserver_prge'
+    container_name: 'geoserver_prge_${ENV_NAME'
     ports:
       - *env-geoserver-port:8080
     environment:
