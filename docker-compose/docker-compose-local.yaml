@@ -34,6 +34,9 @@ services:
       - SKIP_DEMO_DATA=true
       - *env-geoserver-admin-user
       - *env-geoserver-admin-password
+      - *env-postgres-db
+      - *env-postgres-user
+      - *env-postgres-password
     volumes:
       - ../config/geoserver_data:/opt/geoserver_data
 
