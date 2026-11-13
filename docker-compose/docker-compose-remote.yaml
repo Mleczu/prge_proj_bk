@@ -34,7 +34,7 @@ services:
       - *env-geoserver-admin-user
       - *env-geoserver-admin-password
     volumes:
-      - geoserver-data:/opt/geoserver_data
+      - ../config/geoserver_data:/opt/geoserver_data
 
   fastapi:
     build:
