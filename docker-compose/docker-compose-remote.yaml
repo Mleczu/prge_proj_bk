@@ -31,10 +31,14 @@ services:
     ports:
       - '${GEOSERVER_PORT}:8080'
     environment:
+      - SKIP_DEMO_DATA=true
       - *env-geoserver-admin-user
       - *env-geoserver-admin-password
+      - *env-postgres-db
+      - *env-postgres-user
+      - *env-postgres-password
     volumes:
-      - ../config/geoserver_data:/opt/geoserver_data
+      - geoserver_data:/opt/geoserver_data
 
   fastapi:
     build:
@@ -53,4 +57,4 @@ services:
 
 volumes:
   postgis-data:
-  geoserver-data:
+  geoserver_data:
